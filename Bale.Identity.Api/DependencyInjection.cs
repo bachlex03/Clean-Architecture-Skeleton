@@ -2,6 +2,7 @@
 using Asp.Versioning;
 using Bale.Identity.Api.OpenApi;
 using Microsoft.Extensions.Options;
+using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Bale.Identity.Api;
@@ -21,6 +22,13 @@ public static class DependencyInjection
        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationOptions>();
 
         return services;
+    }
+
+    public static void AddSerilog(this IHostBuilder builder, IConfiguration configuration)
+    {
+        builder.UseSerilog((context, loggerConfiguration) => {
+            loggerConfiguration.ReadFrom.Configuration(configuration);
+        });
     }
 
     public static IServiceCollection AddVersioning(this IServiceCollection services)

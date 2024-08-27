@@ -1,5 +1,6 @@
 using Asp.Versioning.ApiExplorer;
 using Bale.Identity.Api;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPresentation();
+
+// Add Serilog to the builder
+builder.Host.AddSerilog(builder.Configuration);
 
 
 var app = builder.Build();
@@ -37,6 +41,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Add Serilog to the request pipeline, enable request logging through http
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 

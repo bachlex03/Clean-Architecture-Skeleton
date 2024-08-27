@@ -22,6 +22,7 @@ public class SwaggerConfigurationOptions : IConfigureOptions<SwaggerGenOptions>
             options.SwaggerDoc(description.GroupName, OpenApiInfo(description));
         }
 
+        // Add the XML comment/summary to the Swagger
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         options.IncludeXmlComments(xmlPath);
