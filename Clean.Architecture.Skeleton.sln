@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Shared", "Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Test", "Services\Identity\Bale.Identity.Test\Bale.Identity.Test.csproj", "{2EAFAE7A-5885-4BFF-A141-E8BDDB1C405D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bale.Identity.Api", "Bale.Identity.Api\Bale.Identity.Api.csproj", "{0BE22BEC-B2E1-4959-9445-E1CA49F699F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bale.Identity.Api", "Services\Identity\Bale.Identity.Api\Bale.Identity.Api.csproj", "{0BE22BEC-B2E1-4959-9445-E1CA49F699F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
