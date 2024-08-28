@@ -52,8 +52,6 @@ public class SwaggerConfigurationOptions : IConfigureOptions<SwaggerGenOptions>
             info.Description += " This API version has been deprecated.";
         }
 
-        
-
         return info;
     }
 }

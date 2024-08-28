@@ -6,10 +6,14 @@ using Bale.Identity.Core.Common.Abstractions;
 namespace Bale.Identity.Application.Sample.Command;
 internal class CreateSampleCommandHandler : ICommandHandler<CreateSampleCommand, CreateSampleResponse>
 {
-    public Task<Result<CreateSampleResponse>> Handle(CreateSampleCommand request, CancellationToken cancellationToken)
+    public async Task<Result<CreateSampleResponse>> Handle(CreateSampleCommand request, CancellationToken cancellationToken)
     {
         var response = new CreateSampleResponse(Email: request.Email, Name: request.Name);
 
-        throw new Exception("test");
+        return Result<CreateSampleResponse>.Success(response);
+
+        //return Result<CreateSampleResponse>.Failure(SampleErrors.SampleError);
+
+        //return true;
     }
 }

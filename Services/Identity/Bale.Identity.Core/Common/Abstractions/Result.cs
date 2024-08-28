@@ -17,10 +17,14 @@ public class Result
 
 public class Result<TResponse> : Result
 {
-    public TResponse Respone { get; }
+    public TResponse? Response { get; }
 
-    public Result(bool isSuccess, TResponse response, Error error) : base(isSuccess, error)
+    public Result(bool isSuccess, TResponse? response, Error error) : base(isSuccess, error)
     {
-        Respone = response;
+        Response = response;
     }
+
+    public static Result<TResponse> Success(TResponse response) => new(true, response, Error.None);
+    public static Result<TResponse> Failure(Error error) => new(false, default!, error);
+    public static implicit operator Result<TResponse>(bool result) => new(true, default, Error.None);
 }
