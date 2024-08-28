@@ -45,6 +45,9 @@ if (app.Environment.IsDevelopment())
 // Add Serilog to the request pipeline, enable request logging through http
 app.UseSerilogRequestLogging();
 
+//use error endpoint to catch exception
+app.UseExceptionHandler("/error");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

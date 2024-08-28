@@ -1,8 +1,10 @@
 ﻿
 using Asp.Versioning;
+using Bale.Identity.Api.Error;
 using Bale.Identity.Api.OpenApi;
 using Mapster;
 using MapsterMapper;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -12,7 +14,9 @@ namespace Bale.Identity.Api;
 public static class DependencyInjection
 {
     public static IServiceCollection AddPresentation(this IServiceCollection services) {
-        
+
+        services.AddGlobalExceptionHandling();
+
         services.AddVersioning();
 
         services.AddSwaggerExtentions();
@@ -24,7 +28,7 @@ public static class DependencyInjection
 
     public static IServiceCollection AddSwaggerExtentions(this IServiceCollection services)
     {
-       services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationOptions>();
+        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationOptions>();
 
         return services;
     }
@@ -83,6 +87,13 @@ public static class DependencyInjection
 
         services.AddSingleton(config);
         services.AddScoped<IMapper, ServiceMapper>();
+        return services;
+    }
+
+    public static IServiceCollection AddGlobalExceptionHandling(this IServiceCollection services)
+    {
+        services.AddSingleton<ProblemDetailsFactory, IdentityProblemDetailsFactory>();
+
         return services;
     }
 }

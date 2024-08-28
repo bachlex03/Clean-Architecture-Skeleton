@@ -28,7 +28,7 @@ namespace Bale.Identity.Api.Controllers
         /// <returns>Sample API</returns>
         [HttpGet]
         //[Route("")]
-        [MapToApiVersion(2)]
+        [MapToApiVersion(1)]
         public IActionResult Get1()
         {
             //return Ok("v1");
@@ -38,7 +38,7 @@ namespace Bale.Identity.Api.Controllers
 
         [HttpGet]
         //[Route("")]
-        [MapToApiVersion(1)]
+        [MapToApiVersion(2)]
         public IActionResult Get2()
         {
             return Ok("test api");
