@@ -30,8 +30,4 @@
     <ProjectReference Include="..\Services\Identity\Bale.Identity.Constract\Bale.Identity.Constract.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\Extensions\" />
-  </ItemGroup>
-
 </Project>

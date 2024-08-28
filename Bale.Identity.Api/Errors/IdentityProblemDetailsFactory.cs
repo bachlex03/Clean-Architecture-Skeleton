@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bale.Identity.Core.Common.Errors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
-namespace Bale.Identity.Api.Error
+namespace Bale.Identity.Api.Errors
 {
     public class IdentityProblemDetailsFactory : ProblemDetailsFactory
     {
@@ -91,7 +92,15 @@ namespace Bale.Identity.Api.Error
                 problemDetails.Extensions["traceId"] = traceId;
             }
 
-            problemDetails.Extensions.Add("test", "test extensions");
+            if (httpContext?.Items["errors"] is Error[] errors)
+            {
+                problemDetails.Extensions.Add("errors", errors);
+            }
+
+            if (httpContext?.Items["error"] is Error error)
+            {
+                problemDetails.Extensions.Add("error", error);
+            }
 
             //var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
             //if (errors is not null)

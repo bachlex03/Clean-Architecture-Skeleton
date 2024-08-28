@@ -1,6 +1,6 @@
 ﻿
 using Asp.Versioning;
-using Bale.Identity.Api.Error;
+using Bale.Identity.Api.Errors;
 using Bale.Identity.Api.OpenApi;
 using Mapster;
 using MapsterMapper;
@@ -92,6 +92,7 @@ public static class DependencyInjection
 
     public static IServiceCollection AddGlobalExceptionHandling(this IServiceCollection services)
     {
+        // override the default problem details factory (the default one is the one that is used by the Problem() method)
         services.AddSingleton<ProblemDetailsFactory, IdentityProblemDetailsFactory>();
 
         return services;

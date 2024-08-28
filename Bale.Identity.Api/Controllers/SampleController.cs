@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using Bale.Identity.Api.Common.Extensions;
 using Bale.Identity.Application.Sample.Commands;
 using Bale.Identity.Constract.Sample;
 using MapsterMapper;
@@ -11,7 +12,7 @@ namespace Bale.Identity.Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]/[action]")]
     [ApiVersion(1)]
     [ApiVersion(2, Deprecated = true)]
-    public class SampleController : ControllerBase
+    public class SampleController : ApiController
     {
         private readonly ISender _sender;
         private readonly IMapper _mapper;
@@ -52,7 +53,7 @@ namespace Bale.Identity.Api.Controllers
 
             var result = await _sender.Send(cmd);
 
-            return Ok(result);
+            return result.Match(Ok, HandleFailure);
         }
     }
 }
