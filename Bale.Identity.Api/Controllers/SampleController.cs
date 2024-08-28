@@ -1,14 +1,28 @@
 ﻿using Asp.Versioning;
+using Bale.Identity.Api.Common.Extensions;
+using Bale.Identity.Application.Sample.Commands;
+using Bale.Identity.Constract.Sample;
+using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bale.Identity.Api.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     [ApiVersion(1)]
     [ApiVersion(2, Deprecated = true)]
-    public class SampleController : ControllerBase
+    public class SampleController : ApiController
     {
+        private readonly ISender _sender;
+        private readonly IMapper _mapper;
+
+        public SampleController(ISender sender, IMapper mapper)
+        {
+            _sender = sender;
+            _mapper = mapper;
+        }
+
         /// <summary>
         /// Get the version 1 of the API
         /// </summary>
@@ -29,6 +43,17 @@ namespace Bale.Identity.Api.Controllers
         public IActionResult Get2()
         {
             return Ok("test api");
+        }
+
+        [HttpPost]
+        [MapToApiVersion(1)]
+        public async Task<IActionResult> CreateSample(CreateSampleRequest request)
+        {
+            var cmd = _mapper.Map<CreateSampleCommand>(request);
+
+            var result = await _sender.Send(cmd);
+
+            return result.Match(Ok, HandleFailure);
         }
     }
 }

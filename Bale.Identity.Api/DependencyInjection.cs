@@ -1,25 +1,34 @@
 ﻿
 using Asp.Versioning;
+using Bale.Identity.Api.Errors;
 using Bale.Identity.Api.OpenApi;
+using Mapster;
+using MapsterMapper;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace Bale.Identity.Api;
 public static class DependencyInjection
 {
     public static IServiceCollection AddPresentation(this IServiceCollection services) {
-        
+
+        services.AddGlobalExceptionHandling();
+
         services.AddVersioning();
 
         services.AddSwaggerExtentions();
+
+        services.AddMapping();
 
         return services;
     }
 
     public static IServiceCollection AddSwaggerExtentions(this IServiceCollection services)
     {
-       services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationOptions>();
+        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationOptions>();
 
         return services;
     }
@@ -67,6 +76,24 @@ public static class DependencyInjection
             // this is the group name selector, it will select the group name based on the version (only necsesary with url segment)
             options.SubstituteApiVersionInUrl = true;
         });
+
+        return services;
+    }
+
+    public static IServiceCollection AddMapping(this IServiceCollection services)
+    {
+        var config = new TypeAdapterConfig();
+        config.Scan(Assembly.GetExecutingAssembly());
+
+        services.AddSingleton(config);
+        services.AddScoped<IMapper, ServiceMapper>();
+        return services;
+    }
+
+    public static IServiceCollection AddGlobalExceptionHandling(this IServiceCollection services)
+    {
+        // override the default problem details factory (the default one is the one that is used by the Problem() method)
+        services.AddSingleton<ProblemDetailsFactory, IdentityProblemDetailsFactory>();
 
         return services;
     }
