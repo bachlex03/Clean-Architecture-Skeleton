@@ -1,9 +1,12 @@
 ﻿
 using Asp.Versioning;
 using Bale.Identity.Api.OpenApi;
+using Mapster;
+using MapsterMapper;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace Bale.Identity.Api;
 public static class DependencyInjection
@@ -13,6 +16,8 @@ public static class DependencyInjection
         services.AddVersioning();
 
         services.AddSwaggerExtentions();
+
+        services.AddMapping();
 
         return services;
     }
@@ -68,6 +73,16 @@ public static class DependencyInjection
             options.SubstituteApiVersionInUrl = true;
         });
 
+        return services;
+    }
+
+    public static IServiceCollection AddMapping(this IServiceCollection services)
+    {
+        var config = new TypeAdapterConfig();
+        config.Scan(Assembly.GetExecutingAssembly());
+
+        services.AddSingleton(config);
+        services.AddScoped<IMapper, ServiceMapper>();
         return services;
     }
 }
