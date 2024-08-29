@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Constract", "Services\Identity\Bale.Identity.Constract\Bale.Identity.Constract.csproj", "{16485E94-FD53-488B-8063-849287B0F230}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Core", "Services\Identity\Bale.Identity.Core\Bale.Identity.Core.csproj", "{C782154D-5035-45D3-BC31-44DF66983B9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Domain", "Services\Identity\Bale.Identity.Domain\Bale.Identity.Domain.csproj", "{C782154D-5035-45D3-BC31-44DF66983B9D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Infrastructure", "Services\Identity\Bale.Identity.Infrastructure\Bale.Identity.Infrastructure.csproj", "{39A25227-B0DA-49C6-898F-582832AD85CB}"
 EndProject
@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Shared", "Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Test", "Services\Identity\Bale.Identity.Test\Bale.Identity.Test.csproj", "{2EAFAE7A-5885-4BFF-A141-E8BDDB1C405D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bale.Identity.Api", "Services\Identity\Bale.Identity.Api\Bale.Identity.Api.csproj", "{0BE22BEC-B2E1-4959-9445-E1CA49F699F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bale.Identity.Api", "Services\Identity\Bale.Identity.Api\Bale.Identity.Api.csproj", "{0BE22BEC-B2E1-4959-9445-E1CA49F699F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

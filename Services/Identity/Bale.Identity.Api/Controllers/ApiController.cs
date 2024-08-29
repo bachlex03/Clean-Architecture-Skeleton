@@ -1,4 +1,4 @@
-﻿using Bale.Identity.Core.Common.Abstractions;
+﻿using Bale.Identity.Domain.Common.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bale.Identity.Api.Controllers;

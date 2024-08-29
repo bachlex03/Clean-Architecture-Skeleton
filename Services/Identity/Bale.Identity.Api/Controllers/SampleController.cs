@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using Bale.Identity.Api.Common.Extensions;
-using Bale.Identity.Application.Sample.Commands;
-using Bale.Identity.Constract.Sample;
+using Bale.Identity.Application.Samples.Commands;
+using Bale.Identity.Constract.Samples;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

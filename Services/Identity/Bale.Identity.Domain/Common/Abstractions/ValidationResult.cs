@@ -1,7 +1,7 @@
 ﻿
-using Bale.Identity.Core.Common.Errors;
+using Bale.Identity.Domain.Common.Errors;
 
-namespace Bale.Identity.Core.Common.Abstractions;
+namespace Bale.Identity.Domain.Common.Abstractions;
 public class ValidationResult<TResponse> : Result<TResponse>, IValidationResult
 {
     public Error[] Errors { get; }

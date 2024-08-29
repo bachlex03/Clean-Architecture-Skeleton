@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Bale.Identity.Core.Common.Abstractions;
+using Bale.Identity.Domain.Common.Abstractions;
 
 namespace Bale.Identity.Api.Common.Extensions;
 public static class ResultExtension

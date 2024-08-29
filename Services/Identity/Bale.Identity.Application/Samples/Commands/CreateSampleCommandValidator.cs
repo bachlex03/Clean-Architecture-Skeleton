@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Bale.Identity.Application.Sample.Commands;
+namespace Bale.Identity.Application.Samples.Commands;
 public class CreateSampleCommandValidator : AbstractValidator<CreateSampleCommand>
 {
     public CreateSampleCommandValidator()

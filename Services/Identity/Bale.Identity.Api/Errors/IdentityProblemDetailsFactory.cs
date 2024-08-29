@@ -1,4 +1,4 @@
-﻿using Bale.Identity.Core.Common.Errors;
+﻿using Bale.Identity.Domain.Common.Errors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;

@@ -1,6 +1,6 @@
 ﻿
-using Bale.Identity.Core.Common.Abstractions;
-using Bale.Identity.Core.Common.Errors;
+using Bale.Identity.Domain.Common.Abstractions;
+using Bale.Identity.Domain.Common.Errors;
 using FluentValidation;
 using MediatR;
 

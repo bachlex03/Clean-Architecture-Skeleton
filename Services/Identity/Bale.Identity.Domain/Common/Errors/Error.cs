@@ -1,4 +1,4 @@
-﻿namespace Bale.Identity.Core.Common.Errors;
+﻿namespace Bale.Identity.Domain.Common.Errors;
 public class Error
 {
     public string Code { get; }

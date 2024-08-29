@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bale.Identity.Constract\Bale.Identity.Constract.csproj" />
-    <ProjectReference Include="..\Bale.Identity.Core\Bale.Identity.Core.csproj" />
+    <ProjectReference Include="..\Bale.Identity.Domain\Bale.Identity.Domain.csproj" />
   </ItemGroup>
 
 </Project>

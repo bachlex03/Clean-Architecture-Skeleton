@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Bale.Identity.Application\Bale.Identity.Application.csproj" />
     <ProjectReference Include="..\Bale.Identity.Constract\Bale.Identity.Constract.csproj" />
+    <ProjectReference Include="..\Bale.Identity.Persistence\Bale.Identity.Persistence.csproj" />
   </ItemGroup>
 
 
